@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cadeaux Rigolos d'Anniversaire</title>
+  <style>
+    
+     body {
+            font-family: 'Roboto',sans-serif;
+            background-color: #fafafa;
+            color:#333;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-image: 
+            url('EB3.jpg'); 
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            font-size: 1rem;
+            
+            
+           
+        }
+
+     
+    
+        p{
+            font-size: 1.1em;
+            line-height :2.5em;
+            
+           }
+    h1{
+            color: blueviolet;
+            font-size: 2.5em;
+            margin-bottom: 0.3em;
+            text-align: center;
+           }
+
+
+    .cadeau-item {
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    button {
+      background-color: #FFD54F;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover { background-color: #FFCA28; }
+
+    #resultat {
+      background-color: #FFF3E0;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      font-style: italic;
+      white-space: pre-line;
+    } 
+    h2{
+            color: rgb(154, 76, 92);
+            font-size :2.5em;
+            margin-bottom: 0.5em;
+            margin-top: 1.5em;
+            text-align:center;
+           }
+
+
+    /* Animation shake */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Son de rire amusant -->
+<audio id="merciAudio" preload="auto">
+  <source src="https://orangefreesounds.com/wp-content/uploads/2023/12/Cheerful-ding-sound-effect.mp3" type="audio/mpeg">
+</audio>
+
+  <h1>🎉 HAPPY BIRTHDAY Ms Bienderan🎉</h1> 
+  <p>
+            Je te souhaite une année pleine de joie, de réussite, d'amour et de belles suprises🎊. 
+            Tu es quelqu'un de spécial✨, même si tu restes parfois un peu réservé😪.
+            J'espère que tu prendras le temps de profiter de ta journée, de te faire plaisir et de savourer chaque instant.
+            Tu le mérites vraiment,et j'espère que cette nouvelle année t'apportera ce que tu souhaites au fond de toi😘👌
+  </p>
+    
+
+
+  <h2>Voici une sélection de cadeaux bizarres, inutiles.... mais affectueux 😄<br>
+  Coche ce que tu veux recevoir :</h2>
+
+  <form id="cadeauxForm">
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Une lampe qui n’éclaire que tes idées floues" id="c1">
+      <label for="c1">Une lampe qui n’éclaire que tes idées floues 💡</label>
+    </div>
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Une go virtuelle (en phase d’inaccessibilité)" id="c2">
+      <label for="c2">Une go virtuelle (en phase d’inaccessibilité) 🧍‍♀️📴</label>
+    </div>
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Une médaille « champion de la grande absence »" id="c3">
+      <label for="c3">Une médaille « champion de la grande absence » 🏅</label>
+    </div>
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Un terrain sur la Lune (bon courage pour y aller)" id="c4">
+      <label for="c4">Un terrain sur la Lune (bon courage pour y aller) 😜</label>
+    </div>
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Un ticket VIP pour t’asseoir tranquille dans ton canapé" id="c5">
+      <label for="c5">Un ticket VIP pour t’asseoir tranquille dans ton canapé 🛋️</label>
+    </div>
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Un gâteau d’anniversaire version message" id="c6">
+      <label for="c6">Un gâteau d’anniversaire version message 🎂</label>
+    </div>
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Une recette pour cuisiner de l’air" id="c7">
+      <label for="c7">Une recette pour cuisiner de l’air</label>
+    </div>
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Un bon pour rêver un peu plus fort cette nuit" id="c8">
+      <label for="c8">Un bon pour rêver un peu plus fort cette nuit 🛏️💤</label>
+    </div>
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Un café chaud, même à distance" id="c9">
+      <label for="c9">Un café chaud, même à distance ☕</label>
+    </div>
+    <div class="cadeau-item">
+      <input type="checkbox" name="cadeau" value="Un bravo pour avoir cliqué ici 👏" id="c10">
+      <label for="c10">Un "bravo" pour avoir cliqué ici 👏</label>
+    </div>
+
+    <button type="button" id="validerBtn">Valider mes cadeaux 🎁</button>
+  </form>
+
+  <div id="resultat"></div>
+
+  <script>
+    document.getElementById('validerBtn').addEventListener('click', function () {
+      const checkboxes = document.querySelectorAll('input[name="cadeau"]:checked');
+
+      if (checkboxes.length === 0) {
+        document.getElementById('resultat').textContent = "Tu n'as choisi aucun cadeau… 🤭";
+        return;
+      }
+
+      const cadeauxChoisis = Array.from(checkboxes).map(cb => cb.value);
+      const message = "🎁 Tu as choisi :\\n- " + cadeauxChoisis.join("\\n- ") + "\\n\\nProfite de ces merveilles inutiles 😄";
+      document.getElementById('resultat').textContent = message;
+
+      // Lecture du merci
+      document.getElementById('merciAudio').play();
+
+      // Animation shake
+      const res = document.getElementById('resultat');
+      res.style.animation = "shake 0.4s";
+      setTimeout(() => { res.style.animation = ""; }, 500);
+
+      // Message final pop-up
+      setTimeout(() => {
+        alert("🎉 Merci d’avoir joué le jeu ! Tu es maintenant propriétaire officiel de tes cadeaux inutiles,mon mentor😄❤️😘");
+      }, 800);
+    });
+  </script>
+
+</body>
+</html>
